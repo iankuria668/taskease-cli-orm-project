@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# lib/models/user.py
 from models.__init__ import CONN, CURSOR
 class User:
     # Users are stored in a dictionary with the user's ID as the key.
