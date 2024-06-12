@@ -52,19 +52,17 @@ class Category:
         Category.all[self._category_id] = self
 
     def update(self):
+        """Updates the category's information in the database."""
         sql = "UPDATE categories SET category_name = ? WHERE category_id = ?;"
-        CURSOR.execute(sql, (self.category_name, self.category_id))
+        CURSOR.execute(sql, (self.category_name, self._category_id))  # Corrected attribute name
         CONN.commit()
+
     
     def delete(self):
+        """Deletes the category from the database."""
         sql = "DELETE FROM categories WHERE category_id = ?;"
-        CURSOR.execute(sql, (self.category_id,))
+        CURSOR.execute(sql, (self._category_id,))  # Corrected attribute name
         CONN.commit()
-
-        del Category.all[self.category_id]
-
-        self._category_id = None
-        self._category_name = None
 
     @classmethod
     def instance_from_db(cls, row):
@@ -89,4 +87,10 @@ class Category:
     def find_by_id(cls, category_id):
         sql = "SELECT * FROM categories WHERE category_id = ?;"
         row = CURSOR.execute(sql, (category_id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+    
+    @classmethod
+    def find_by_name(cls, category_name):
+        sql = "SELECT * FROM categories WHERE category_name = ?;"
+        row = CURSOR.execute(sql, (category_name,)).fetchone()
         return cls.instance_from_db(row) if row else None

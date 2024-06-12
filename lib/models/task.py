@@ -129,3 +129,11 @@ class Task:
         CURSOR.execute(sql, (user_id,))
         rows = CURSOR.fetchall()
         return [cls.instance_from_db(row) for row in rows]
+    
+    @classmethod
+    def find_by_name_and_user_id(cls, task_name, user_id):
+        """Returns a task object from the database having the given name and user ID."""
+        sql = "SELECT * FROM tasks WHERE task_name = ? AND user_id = ?;"
+        CURSOR.execute(sql, (task_name, user_id,))
+        row = CURSOR.fetchone()
+        return cls.instance_from_db(row) if row else None
