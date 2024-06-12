@@ -13,7 +13,8 @@ def list_tasks_by_username():
     if user:
         tasks = Task.find_by_user_id(user._user_id)
         for task in tasks:
-            print(task)
+            # printing all info about tasks
+            print(f"Task found: ID: {task._task_id}, Title: {task.task_name}, Description: {task.task_description}, Due Date: {task.task_due_date}, Priority: {task.task_priority}, Status: {task.task_status}")
     else:
         print(f"User {username} not found.")
 
@@ -22,12 +23,12 @@ def find_tasks_by_name_and_username():
     user = User.find_by_username(username)
     if user:
         task_name = input("Enter task name: ")
-        task = Task.find_by_name_and_user_id(task_name, user.user_id)
+        task = Task.find_by_name_and_user_id(task_name, user._user_id)  # Corrected user ID attribute name
         if task:
-            for task in task:
-                print(task)
+
+            print(f"Task found: ID: {task._task_id}, Title: {task.task_name}, Description: {task.task_description}, Due Date: {task.task_due_date}, Priority: {task.task_priority}, Status: {task.task_status}")
         else:
-            print(f"No tasks found for user {username} and task name {task_name}.")
+            print("Task not found.")
     else:
         print(f"User {username} not found.")
 
@@ -35,7 +36,7 @@ def find_task_by_id():
     task_id = input("Enter task ID: ")
     task = Task.find_by_id(task_id)
     if task:
-        print(task)
+        print(f'Task found: Title: {task.task_name}, Description: {task.task_description}, Due Date: {task.task_due_date}, Priority: {task.task_priority}, Status: {task.task_status}')
     else:
         print(f"Task {task_id} not found.")
 
@@ -49,26 +50,18 @@ def create_task():
         task_priority = input("Enter task priority: ")
         task_status = input("Enter task status: ")
         category_name = input("Enter category name: ")
-
         category = Category.find_by_name(category_name)
-        if not category:
-            create_category =  input(f'Category {category_name} does not exist. Do you want to create it? (y/n): ').strip().lower()
-            if create_category == 'y':
-                category = Category(None, category_name)
-                category.save()
-
-            else:
-                print('Task Creation Aborted')
-                return
-
-        task = Task(None, user.user_id, task_name, task_description, task_due_date, task_priority, task_status, category.category_id)
-        task.save()
-        print(f"Task {task_name} created successfully.")
+        if category:
+            task = Task(None, user._user_id, task_name, task_description, task_due_date, task_priority, task_status, category._category_id)  # Corrected attribute names
+            task.save()
+            print(f"Task '{task_name}' created successfully.")
+        else:
+            print(f"Category '{category_name}' not found.")
     else:
-        print(f"User {username} not found.")
+        print(f"User '{username}' not found.")
 
 def update_task():
-    task_id = int(input("Enter task ID: "))
+    task_id = input("Enter task ID: ")
     task = Task.find_by_id(task_id)
     if task:
         task_name = input("Enter new task name: ")
@@ -78,27 +71,22 @@ def update_task():
         task_status = input("Enter new task status: ")
         category_name = input("Enter new category name: ")
 
+        # Find the category by name
         category = Category.find_by_name(category_name)
-        if not category:
-            create_category =  input(f'Category {category_name} does not exist. Do you want to create it? (y/n): ').strip().lower()
-            if create_category == 'y':
-                category = Category(None, category_name)
-                category.save()
-
-            else:
-                print('Task Creation Aborted')
-                return
-            
-        task.title = task_name
-        task.description = task_description
-        task.due_date = task_due_date
-        task.priority = task_priority
-        task.status = task_status
-        task.category_id = category.category_id
-        task.update()
-        print(f"Task {task_name} updated successfully.")
+        if category:
+            # Update task attributes
+            task.task_name = task_name
+            task.task_description = task_description
+            task.task_due_date = task_due_date
+            task.task_priority = task_priority
+            task.task_status = task_status
+            task.category_id = category._category_id  # Use correct attribute name
+            task.update()
+            print("Task updated successfully.")
+        else:
+            print(f"Category {category_name} not found.")
     else:
-        print(f"Task {task_id} not found.")
+        print(f"Task with ID {task_id} not found.")
 def delete_task():
     task_id = int(input("Enter task ID: "))
     task = Task.find_by_id(task_id)
@@ -136,15 +124,16 @@ def create_category():
     print(f"Category {category_name} created successfully.")
 
 def update_category():
-    category_id = int(input("Enter category ID: "))
+    category_id = input("Enter category ID: ")
     category = Category.find_by_id(category_id)
     if category:
-        category_name = input("Enter new category name: ")
-        category.category_name = category_name
+        new_category_name = input("Enter new category name: ")
+        category.category_name = new_category_name
         category.update()
-        print(f"Category {category_name} updated successfully.")
+        print("Category updated successfully.")
     else:
-        print(f"Category {category_id} not found.")
+        print(f"Category with ID {category_id} not found.")
+
 
 def delete_category():
     category_id = int(input("Enter category ID: "))
@@ -158,13 +147,13 @@ def delete_category():
 def list_users():
     users = User.get_all()
     for user in users:
-        print(user)
+        print(f"User ID: {user._user_id}, Username: {user.username}, Full Name: {user.full_name}")
 
 def find_user_by_username():
     username = input('Enter username: ')
     user = User.find_by_username(username)
     if user:
-        print(user)
+        print(f"User ID: {user._user_id}, Username: {user.username}, Full Name: {user.full_name}")
     else:
         print(f"User {username} not found.")
 
@@ -172,7 +161,7 @@ def find_user_by_id():
     user_id = int(input('Enter user ID: '))
     user = User.find_by_id(user_id)
     if user:
-        print(user)
+        print(f"User ID: {user._user_id}, Username: {user.username}, Full Name: {user.full_name}")
     else:
         print(f"User {user_id} not found.")
 
