@@ -19,7 +19,8 @@ from helpers import (
     find_user_by_username,
     create_user,
     update_user,
-    delete_user
+    delete_user,
+    list_tasks_by_username_and_category
     
 )
 
@@ -30,6 +31,8 @@ def main():
         choice = input("> ")
         if choice == "0":
             exit_program()
+        elif choice == "1":
+            list_tasks_by_username_and_category()
         elif choice == "1":
             list_tasks_by_username()
         elif choice == "2":
@@ -54,20 +57,6 @@ def main():
             update_category()
         elif choice == "12":
             delete_category()
-        elif choice == "13":
-            list_users()
-        elif choice == "14":
-            find_user_by_id()
-        elif choice == "15":
-            find_user_by_username()
-        elif choice == "16":
-            create_user()
-        elif choice == "17":
-            update_user()
-        elif choice == "18":
-            delete_user()
-        else:
-            print("Invalid choice")
 
 
 
@@ -76,8 +65,8 @@ def main():
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
-    print("1. List tasks")
-    print("2. Find task by name")
+    print("1. Filter tasks by category")
+    print("2. List Tasks")
     print("3. Find task by ID")
     print("4. Create task")
     print("5. Update task")
