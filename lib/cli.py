@@ -1,8 +1,9 @@
 # lib/cli.py
 
 from helpers import (
+    exit_program,
     list_tasks_by_username,
-    find_task_by_name_and_username,
+    find_tasks_by_name_and_username,
     find_task_by_id,
     create_task,
     update_task,
@@ -12,6 +13,14 @@ from helpers import (
     find_category_by_id,
     create_category,
     update_category,
+    delete_category,
+    list_users,
+    find_user_by_id,
+    find_user_by_username,
+    create_user,
+    update_user,
+    delete_user
+    
 )
 
 
@@ -24,7 +33,7 @@ def main():
         elif choice == "1":
             list_tasks_by_username()
         elif choice == "2":
-            find_task_by_name_and_username()
+            find_tasks_by_name_and_username()
         elif choice == "3":
             find_task_by_id()
         elif choice == "4":
@@ -46,9 +55,17 @@ def main():
         elif choice == "12":
             delete_category()
         elif choice == "13":
-            find_user_by_id()
+            list_users()
         elif choice == "14":
+            find_user_by_id()
+        elif choice == "15":
             find_user_by_username()
+        elif choice == "16":
+            create_user()
+        elif choice == "17":
+            update_user()
+        elif choice == "18":
+            delete_user()
         else:
             print("Invalid choice")
 
@@ -71,8 +88,12 @@ def menu():
     print("10. Create category")
     print("11. Update category")
     print("12. Delete category")
-    print("13. Find user by ID")
-    print("14. Find user by username")
+    print("13. List users")
+    print("14. Find user by ID")
+    print("15. Find user by username")
+    print("16. Create user")
+    print("17. Update user")
+    print("18. Delete user")
 
 
 if __name__ == "__main__":

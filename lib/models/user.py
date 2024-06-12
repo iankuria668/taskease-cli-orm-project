@@ -3,7 +3,7 @@
 from models.__init__ import CONN, CURSOR
 class User:
     # Users are stored in a dictionary with the user's ID as the key.
-    all = {}
+    all = []
 
     def __init__(self, user_id, username, full_name):
         self.user_id = user_id
@@ -92,14 +92,45 @@ class User:
         """Returns a user object from a database row  having the user's information."""
         user = cls.all.get(row[0])
         if user:
-            # 
-            user.user_id = row[0]
+            # ensuring the user's information is up to date
             user.username = row[1]
             user.full_name = row[2]
             return user
         else:
-            user= cls(row[0], row[1], row[2])
+            # Creting a new insatance if the user is not in the database
+            user = cls(row[0], row[1], row[2])
             user_id = row[0]
-            
+            cls.all[user_id] = user
+            return user
+    
+    @classmethod
+    def get_all(cls):
+        """Returns a list of all users in the database."""
+        sql = "SELECT * FROM users;"
+        CURSOR.execute(sql)
+        rows = CURSOR.fetchall()
+        return [cls.instance_from_db(row) for row in rows]
+    
+    @classmethod
+    def find_by_id(cls, user_id):
+        """Returns a user object from the database having the user's ID."""
+        sql = "SELECT * FROM users WHERE user_id = ?;"
+        row = CURSOR.execute(sql, (user_id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+    
+    @classmethod
+    def find_by_username(cls, username):
+        """Returns a user object from the database having the user's username."""
+        sql = "SELECT * FROM users WHERE username = ?;"
+        row = CURSOR.execute(sql, (username,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+    
+    @classmethod
+    def users(self):
+        """Returns a list of all users in the database."""
+        sql = "SELECT * FROM users;"
+        CURSOR.execute(sql)
+        rows = CURSOR.fetchall()
+        return rows
 
     
