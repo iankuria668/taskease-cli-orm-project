@@ -11,12 +11,9 @@ def list_tasks_by_username():
     username = input("Enter username: ")
     user = User.find_by_username(username)
     if user:
-        tasks = Task.find_by_user_id(user.user_id)
-        if tasks:
-            for task in tasks:
-                print(task)
-        else:
-            print(f"No tasks found for user {username}.")
+        tasks = Task.find_by_user_id(user._user_id)
+        for task in tasks:
+            print(task)
     else:
         print(f"User {username} not found.")
 

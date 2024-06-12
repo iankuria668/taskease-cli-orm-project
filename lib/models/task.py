@@ -122,3 +122,10 @@ class Task:
         sql = "SELECT * FROM tasks WHERE task_id = ?;"
         row = CURSOR.execute(sql, (task_id,)).fetchone()
         return cls.instance_from_db(row) if row else None
+
+    @classmethod
+    def find_by_user_id(cls, user_id):
+        sql = "SELECT * FROM tasks WHERE user_id = ?;"
+        CURSOR.execute(sql, (user_id,))
+        rows = CURSOR.fetchall()
+        return [cls.instance_from_db(row) for row in rows]
