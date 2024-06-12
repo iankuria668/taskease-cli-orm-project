@@ -1,8 +1,12 @@
 # lib/cli.py
 
 from helpers import (
-    exit_program,
-    
+    exit_program, list_tasks,
+    find_task_by_name, find_task_by_id, 
+    create_task,update_task, delete_task, 
+    list_categories, find_category_by_name,
+    find_category_by_id, create_category, 
+    update_category, delete_category 
 )
 
 
@@ -46,7 +50,18 @@ def main():
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
-    print("1. Some useful function")
+    print("1. List tasks")
+    print("2. Find task by name")
+    print("3. Find task by ID")
+    print("4. Create task")
+    print("5. Update task")
+    print("6. Delete task")
+    print("7. List categories")
+    print("8. Find category by name")
+    print("9. Find category by ID")
+    print("10. Create category")
+    print("11. Update category")
+    print("12. Delete category")
 
 
 if __name__ == "__main__":
