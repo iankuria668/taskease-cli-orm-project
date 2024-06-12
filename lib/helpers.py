@@ -40,6 +40,15 @@ def update_category():
 def delete_category():
     pass
 
+def list_users():
+    pass
+
+def find_user_by_username():
+    pass
+
+def find_user_by_id():
+    pass
+
 def create_user():
     pass
 
@@ -49,14 +58,10 @@ def update_user():
 def delete_user():
     pass
 
-def list_users():
-    pass
 
-def find_user_by_id():
-    pass
 
-def find_user_by_username():
-    pass
+
+
 
 
 
