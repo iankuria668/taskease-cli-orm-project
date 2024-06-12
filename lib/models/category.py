@@ -28,7 +28,7 @@ class Category:
 
     @classmethod
     def create_table(cls):
-        """Created the category table in the database."""
+        """Creates the category table in the database."""
         sql = """
         CREATE TABLE IF NOT EXISTS categories (
             category_id INTEGER PRIMARY KEY AUTOINCREMENT,

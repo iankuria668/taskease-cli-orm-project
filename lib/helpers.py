@@ -1,3 +1,4 @@
+#! usr/bin/env python3
 # lib/helpers.py
 from models.user import User
 from models.task import Task
