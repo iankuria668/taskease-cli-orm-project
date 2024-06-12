@@ -194,6 +194,28 @@ def delete_user():
     else:
         print(f"User {user_id} not found.")
 
+def list_tasks_by_username_and_category():
+    username = input("Enter username: ")
+    category_name = input("Enter category name: ")
+
+    user = User.find_by_username(username)
+    if not user:
+        print(f"User '{username}' not found.")
+        return
+
+    category = Category.find_by_name(category_name)
+    if not category:
+        print(f"Category '{category_name}' not found.")
+        return
+
+    tasks = Task.find_by_username_and_category(username, category._category_id)  # Corrected category ID attribute
+    if not tasks:
+        print(f"No tasks found for user '{username}' in category '{category_name}'.")
+        return
+
+    print(f"Tasks for user '{username}' in category '{category_name}':")
+    for task in tasks:
+        print(f"Task ID: {task._task_id}, Task Name: {task.task_name}, Description: {task.task_description}, Due Date: {task.task_due_date}, Priority: {task.task_priority}, Status: {task.task_status}")
 
 
 

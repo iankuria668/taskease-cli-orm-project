@@ -137,3 +137,20 @@ class Task:
         CURSOR.execute(sql, (task_name, user_id,))
         row = CURSOR.fetchone()
         return cls.instance_from_db(row) if row else None
+    
+    @staticmethod
+    def find_by_username_and_category(username, category_id):
+        sql = """
+            SELECT * FROM tasks 
+            WHERE user_id = (SELECT user_id FROM users WHERE username = ?)
+            AND category_id = ?;
+        """
+        CURSOR.execute(sql, (username, category_id))
+        rows = CURSOR.fetchall()
+        tasks = []
+        for row in rows:
+            task = Task(
+                row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]
+            )  # Assuming Task constructor order matches the SQL query result
+            tasks.append(task)
+        return tasks
