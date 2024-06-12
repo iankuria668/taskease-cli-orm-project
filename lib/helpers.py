@@ -7,7 +7,7 @@ def exit_program():
 def list_tasks_by_username():
     pass
 
-def find_task_by_name_and_username():
+def find_tasks_by_name_and_username():
     pass
 
 def find_task_by_id():
@@ -40,11 +40,26 @@ def update_category():
 def delete_category():
     pass
 
+def create_user():
+    pass
+
+def update_user():
+    pass
+
+def delete_user():
+    pass
+
+def list_users():
+    pass
+
 def find_user_by_id():
     pass
 
 def find_user_by_username():
     pass
+
+
+
 
 
 

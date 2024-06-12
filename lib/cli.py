@@ -1,13 +1,17 @@
 # lib/cli.py
 
 from helpers import (
-    exit_program, list_tasks_by_username,
-    find_task_by_name_and_username, find_task_by_id, 
-    create_task,update_task, delete_task, 
-    list_categories, find_category_by_name,
-    find_category_by_id, create_category, 
-    update_category, delete_category, 
-    find_user_by_id, find_user_by_username
+    list_tasks_by_username,
+    find_task_by_name_and_username,
+    find_task_by_id,
+    create_task,
+    update_task,
+    delete_task,
+    list_categories,
+    find_category_by_name,
+    find_category_by_id,
+    create_category,
+    update_category,
 )
 
 

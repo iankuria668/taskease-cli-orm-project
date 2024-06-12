@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 from models.__init__ import CONN, CURSOR
 class User:
+    # Users are stored in a dictionary with the user's ID as the key.
     all = {}
 
     def __init__(self, user_id, username, full_name):
@@ -18,6 +21,7 @@ class User:
     
     @name.setter
     def name(self, name):
+        # Input validation
         if isinstance(name, str) and len(name):
             self.full_name = name
         else:
@@ -29,7 +33,9 @@ class User:
     
     @username.setter
     def username(self, username):
+        #  Input validation
         if isinstance(username, str) and len(username):
+            # Changing username to lowercase
             self.username = username.lower()
         else:
             raise ValueError("Username must be a string and not empty.")
@@ -86,6 +92,7 @@ class User:
         """Returns a user object from a database row  having the user's information."""
         user = cls.all.get(row[0])
         if user:
+            # 
             user.user_id = row[0]
             user.username = row[1]
             user.full_name = row[2]
