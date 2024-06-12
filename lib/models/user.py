@@ -66,15 +66,15 @@ class User:
 
     def update(self):
         sql = "UPDATE users SET username = ?, full_name = ? WHERE user_id = ?;"
-        CURSOR.execute(sql, (self.username, self.full_name, self.user_id))
+        CURSOR.execute(sql, (self.username, self.full_name, self._user_id))
         CONN.commit()
     
     def delete(self):
         sql = "DELETE FROM users WHERE user_id = ?;"
-        CURSOR.execute(sql, (self.user_id,))
+        CURSOR.execute(sql, (self._user_id,))
         CONN.commit()
 
-        del User.all[self.user_id]
+        del User.all[self._user_id]
 
         self._user_id = None
         self._username = None
