@@ -1,18 +1,13 @@
-# Phase 3 CLI+ORM Project Template
+Certainly! Here's a complete README.md file tailored for your TaskEase CLI application:
 
-## Learning Goals
+```markdown
+# TaskEase CLI Application
 
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+TaskEase is a command-line interface (CLI) application designed to help users manage their tasks efficiently. This application allows users to create, update, delete, and list tasks categorized under different categories. It provides a seamless user experience through interactive prompts and commands.
 
 ---
 
-## Introduction
-
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
-
-Take a look at the directory structure:
+## Directory Structure
 
 ```console
 .
@@ -20,153 +15,127 @@ Take a look at the directory structure:
 ├── Pipfile.lock
 ├── README.md
 └── lib
-    ├── models
-    │   ├── __init__.py
-    │   └── model_1.py
     ├── cli.py
     ├── debug.py
-    └── helpers.py
+    ├── helpers.py
+    ├── models
+    │   ├── __init__.py
+    │   ├── category.py
+    │   ├── task.py
+    │   └── user.py
+    └── seed.py
 ```
 
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
+- **cli.py**: Contains the main command-line interface logic where users can interact with the application.
+- **helpers.py**: Provides helper functions used across the application, such as exit program functionality and other utilities.
+- **models/**: Directory containing Python modules defining data models (`user.py`, `task.py`, `category.py`). These modules handle database operations and object-relational mapping (ORM).
 
 ---
 
-## Generating Your Environment
+## Getting Started
 
-You might have noticed in the file structure- there's already a Pipfile!
+To get started with TaskEase, follow these steps:
 
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
+1. **Installation**:
+   - Clone the repository.
+   - Navigate to the project directory.
+   - Install dependencies using Pipenv:
 
-```console
-pipenv install
-pipenv shell
-```
+     ```bash
+     pipenv install
+     ```
 
----
+2. **Running the Application**:
+   - Activate the virtual environment:
 
-## Generating Your CLI
+     ```bash
+     pipenv shell
+     ```
 
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
+   - Initialize the database and seed initial data:
 
-The project template has a sample CLI in `lib/cli.py` that looks like this:
+     ```bash
+     python lib/seed.py
+     ```
 
-```py
-# lib/cli.py
+   - Run the CLI application:
 
-from helpers import (
-    exit_program,
-    helper_1
-)
-
-
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
-
-
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
-
-
-if __name__ == "__main__":
-    main()
-```
-
-The helper functions are located in `lib/helpers.py`:
-
-```py
-# lib/helpers.py
-
-def helper_1():
-    print("Performing useful function#1.")
-
-
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
-
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
-
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
-
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
-
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
-
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
-
-- User interface
-- Data persistence
-- Problem domain rules and logic
+     ```bash
+     python lib/cli.py
+     ```
 
 ---
 
-## Updating README.md
+## Functionality
 
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
+### Commands Available
 
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
+- **List tasks**: View all tasks or filter by category.
+- **Find task by name or ID**: Retrieve task details based on name or ID.
+- **Create task**: Add a new task with specified details.
+- **Update task**: Modify task details including name, description, due date, priority, and status.
+- **Delete task**: Remove a task from the database.
+- **List categories**: Display all available categories.
+- **Find category by name or ID**: Retrieve category details based on name or ID.
+- **Create category**: Add a new category for organizing tasks.
+- **Update category**: Modify category name.
+- **Delete category**: Remove a category and reassign tasks if necessary.
+- **List users**: Display all registered users.
+- **Find user by ID or username**: Retrieve user details based on ID or username.
+- **Create user**: Register a new user with a unique username.
+- **Update user**: Modify user details including username and full name.
+- **Delete user**: Remove a user and associated tasks.
 
-### What Goes into a README?
+### Screenshots
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
-
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
-
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
-
----
-
-## Conclusion
-
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
-
-Happy coding!
+- Include screenshots of the application in action here, demonstrating different commands and outputs.
 
 ---
 
-## Resources
+## Contributing
+
+Contributions are welcome! If you have any suggestions, improvements, or issues to report, please create a GitHub issue or submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE.md file for details.
+
+---
+
+## Acknowledgments
+
+- The development of TaskEase was supported by resources and documentation from [Python SQLite3 Documentation](https://docs.python.org/3/library/sqlite3.html) and [Pipenv Documentation](https://pipenv-fork.readthedocs.io/en/latest/).
+
+---
+
+## Contact
+
+For any inquiries or support, please contact Ian Kuria at ia.kuria.gicheha@gmail.com
+
+---
+
+## References
 
 - [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+- [Python SQLite3 Documentation](https://docs.python.org/3/library/sqlite3.html)
+- [Pipenv Documentation](https://pipenv-fork.readthedocs.io/en/latest/)
+
+```
+
+### Explanation
+
+- **Project Overview**: Introduces TaskEase, explaining its purpose and features.
+- **Directory Structure**: Illustrates the project layout to guide users through the files and folders.
+- **Getting Started**: Provides step-by-step instructions for installing dependencies, setting up the environment, and running the application.
+- **Functionality**: Details the available commands and their functionalities within TaskEase.
+- **Screenshots**: Placeholder section for demonstrating TaskEase in action with visual examples.
+- **Contributing**: Encourages contributions and outlines how users can participate in the project.
+- **License**: Information about the project's licensing terms.
+- **Acknowledgments**: Credits resources and documentation used during development.
+- **Contact**: Contact information for support or inquiries related to TaskEase.
+- **References**: Links to further resources and documentation.
