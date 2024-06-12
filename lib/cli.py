@@ -2,6 +2,7 @@
 
 from helpers import (
     exit_program,
+    list_tasks_by_username_and_category,
     list_tasks_by_username,
     find_tasks_by_name_and_username,
     find_task_by_id,
@@ -20,7 +21,7 @@ from helpers import (
     create_user,
     update_user,
     delete_user,
-    list_tasks_by_username_and_category
+    
     
 )
 
@@ -33,30 +34,44 @@ def main():
             exit_program()
         elif choice == "1":
             list_tasks_by_username_and_category()
-        elif choice == "1":
-            list_tasks_by_username()
         elif choice == "2":
-            find_tasks_by_name_and_username()
+            list_tasks_by_username()
         elif choice == "3":
-            find_task_by_id()
+            find_tasks_by_name_and_username()
         elif choice == "4":
-            create_task()
+            find_task_by_id()
         elif choice == "5":
-            update_task()
+            create_task()
         elif choice == "6":
-            delete_task()
+            update_task()
         elif choice == "7":
-            list_categories()
+            delete_task()
         elif choice == "8":
-            find_category_by_name()
+            list_categories()
         elif choice == "9":
-            find_category_by_id()
+            find_category_by_name()
         elif choice == "10":
-            create_category()
+            find_category_by_id()
         elif choice == "11":
-            update_category()
+            create_category()
         elif choice == "12":
+            update_category()
+        elif choice == "13":
             delete_category()
+        elif choice == "14":
+            list_users()
+        elif choice == "15":
+            find_user_by_id()
+        elif choice == "16":
+            find_user_by_username()
+        elif choice == "17":
+            create_user()
+        elif choice == "18":
+            update_user()
+        elif choice == "19":
+            delete_user()
+        else:
+            print("Invalid choice. Please try again.")
 
 
 
@@ -66,23 +81,25 @@ def menu():
     print("Please select an option:")
     print("0. Exit the program")
     print("1. Filter tasks by category")
-    print("2. List Tasks")
-    print("3. Find task by ID")
-    print("4. Create task")
-    print("5. Update task")
-    print("6. Delete task")
-    print("7. List categories")
-    print("8. Find category by name")
-    print("9. Find category by ID")
-    print("10. Create category")
-    print("11. Update category")
-    print("12. Delete category")
-    print("13. List users")
-    print("14. Find user by ID")
-    print("15. Find user by username")
-    print("16. Create user")
-    print("17. Update user")
-    print("18. Delete user")
+    print("2. List tasks")
+    print("3. Find tasks by name")
+    print("4. Find task by ID")
+    print("5. Create task")
+    print("6. Update task")
+    print("7. Delete task")
+    print("8. List categories")
+    print("9. Find category by name")
+    print("10. Find category by ID")
+    print("11. Create category")
+    print("12. Update category")
+    print("13. Delete category")
+    print("14. List users")
+    print("15. Find user by ID")
+    print("16. Find user by username")
+    print("17. Create user")
+    print("18. Update user")
+    print("19. Delete user")
+    
 
 
 if __name__ == "__main__":
