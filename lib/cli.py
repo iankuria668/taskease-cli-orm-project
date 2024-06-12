@@ -1,12 +1,13 @@
 # lib/cli.py
 
 from helpers import (
-    exit_program, list_tasks,
-    find_task_by_name, find_task_by_id, 
+    exit_program, list_tasks_by_username,
+    find_task_by_name_and_username, find_task_by_id, 
     create_task,update_task, delete_task, 
     list_categories, find_category_by_name,
     find_category_by_id, create_category, 
-    update_category, delete_category 
+    update_category, delete_category, 
+    find_user_by_id, find_user_by_username
 )
 
 
@@ -17,9 +18,9 @@ def main():
         if choice == "0":
             exit_program()
         elif choice == "1":
-            list_tasks()
+            list_tasks_by_username()
         elif choice == "2":
-            find_task_by_name()
+            find_task_by_name_and_username()
         elif choice == "3":
             find_task_by_id()
         elif choice == "4":
@@ -40,6 +41,10 @@ def main():
             update_category()
         elif choice == "12":
             delete_category()
+        elif choice == "13":
+            find_user_by_id()
+        elif choice == "14":
+            find_user_by_username()
         else:
             print("Invalid choice")
 
@@ -62,6 +67,8 @@ def menu():
     print("10. Create category")
     print("11. Update category")
     print("12. Delete category")
+    print("13. Find user by ID")
+    print("14. Find user by username")
 
 
 if __name__ == "__main__":

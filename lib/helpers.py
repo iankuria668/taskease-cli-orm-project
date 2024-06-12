@@ -4,10 +4,10 @@ def exit_program():
     print("Goodbye!")
     exit()
 
-def list_tasks():
+def list_tasks_by_username():
     pass
 
-def find_task_by_name():
+def find_task_by_name_and_username():
     pass
 
 def find_task_by_id():
@@ -38,6 +38,12 @@ def update_category():
     pass
 
 def delete_category():
+    pass
+
+def find_user_by_id():
+    pass
+
+def find_user_by_username():
     pass
 
 
