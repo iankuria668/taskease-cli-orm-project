@@ -24,6 +24,7 @@ TaskEase is a command-line interface (CLI) application designed to help users ma
 ```
 
 - **cli.py**: Contains the main command-line interface logic where users can interact with the application.
+- **debug.py**: Contains functions and utilities to assist in debugging the application.
 - **helpers.py**: Provides helper functions used across the application, such as exit program functionality and other utilities.
 - **models/**: Directory containing Python modules defining data models (`user.py`, `task.py`, `category.py`). These modules handle database operations and object-relational mapping (ORM).
 
@@ -33,33 +34,51 @@ TaskEase is a command-line interface (CLI) application designed to help users ma
 
 To get started with TaskEase, follow these steps:
 
-1. **Installation**:
-   - Clone the repository.
-   - Navigate to the project directory.
-   - Install dependencies using Pipenv:
+### Prerequisites
 
-     ```bash
-     pipenv install
-     ```
+- Python 3.x
+- Pipenv
+- SQLite
 
-2. **Running the Application**:
-   - Activate the virtual environment:
+### Installation
 
-     ```bash
-     pipenv shell
-     ```
+1. **Clone the repository**:
 
-   - Initialize the database and seed initial data:
+    ```bash
+    git clone https://github.com/iankuria668/taskease-cli-orm-project.git
+    ```
 
-     ```bash
-     python lib/seed.py
-     ```
+2. **Navigate to the project directory**:
 
-   - Run the CLI application:
+    ```bash
+    cd taskease-cli-orm-project
+    ```
 
-     ```bash
-     python lib/cli.py
-     ```
+3. **Install dependencies**:
+
+    ```bash
+    pipenv install
+    ```
+
+### Running the Application
+
+1. **Activate the virtual environment**:
+
+    ```bash
+    pipenv shell
+    ```
+
+2. **Initialize the database and seed initial data**:
+
+    ```bash
+    python lib/seed.py
+    ```
+
+3. **Run the CLI application**:
+
+    ```bash
+    python lib/cli.py
+    ```
 
 ---
 
@@ -84,11 +103,10 @@ To get started with TaskEase, follow these steps:
 - **Delete user**: Remove a user and associated tasks.
 
 ### Screenshots
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
 
-- Include screenshots of the application in action here, demonstrating different commands and outputs.
+![CLI Menu](image.png)
+![List Tasks](image-1.png)
+![Task Details](image-2.png)
 
 ---
 
@@ -112,7 +130,7 @@ This project is licensed under the MIT License. See the LICENSE.md file for deta
 
 ## Contact
 
-For any inquiries or support, please contact Ian Kuria at ia.kuria.gicheha@gmail.com
+For any inquiries or support, please contact Ian Kuria at ia.kuria.gicheha@gmail.com.
 
 ---
 
@@ -122,9 +140,9 @@ For any inquiries or support, please contact Ian Kuria at ia.kuria.gicheha@gmail
 - [Python SQLite3 Documentation](https://docs.python.org/3/library/sqlite3.html)
 - [Pipenv Documentation](https://pipenv-fork.readthedocs.io/en/latest/)
 
-```
+---
 
-### Explanation
+## Explanation
 
 - **Project Overview**: Introduces TaskEase, explaining its purpose and features.
 - **Directory Structure**: Illustrates the project layout to guide users through the files and folders.
@@ -136,3 +154,5 @@ For any inquiries or support, please contact Ian Kuria at ia.kuria.gicheha@gmail
 - **Acknowledgments**: Credits resources and documentation used during development.
 - **Contact**: Contact information for support or inquiries related to TaskEase.
 - **References**: Links to further resources and documentation.
+
+---
