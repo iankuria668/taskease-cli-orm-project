@@ -36,7 +36,7 @@ To get started with TaskEase, follow these steps:
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.8 and above
 - Pipenv
 - SQLite
 
@@ -139,20 +139,5 @@ For any inquiries or support, please contact Ian Kuria at ia.kuria.gicheha@gmail
 - [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 - [Python SQLite3 Documentation](https://docs.python.org/3/library/sqlite3.html)
 - [Pipenv Documentation](https://pipenv-fork.readthedocs.io/en/latest/)
-
----
-
-## Explanation
-
-- **Project Overview**: Introduces TaskEase, explaining its purpose and features.
-- **Directory Structure**: Illustrates the project layout to guide users through the files and folders.
-- **Getting Started**: Provides step-by-step instructions for installing dependencies, setting up the environment, and running the application.
-- **Functionality**: Details the available commands and their functionalities within TaskEase.
-- **Screenshots**: Placeholder section for demonstrating TaskEase in action with visual examples.
-- **Contributing**: Encourages contributions and outlines how users can participate in the project.
-- **License**: Information about the project's licensing terms.
-- **Acknowledgments**: Credits resources and documentation used during development.
-- **Contact**: Contact information for support or inquiries related to TaskEase.
-- **References**: Links to further resources and documentation.
 
 ---
