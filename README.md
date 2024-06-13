@@ -1,6 +1,3 @@
-Certainly! Here's a complete README.md file tailored for your TaskEase CLI application:
-
-```markdown
 # TaskEase CLI Application
 
 TaskEase is a command-line interface (CLI) application designed to help users manage their tasks efficiently. This application allows users to create, update, delete, and list tasks categorized under different categories. It provides a seamless user experience through interactive prompts and commands.
